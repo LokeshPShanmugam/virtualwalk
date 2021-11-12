@@ -3,44 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <title>Natural Remedies - Auditorium</title>
-
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap');
+
         body {
-            margin: 0;
             padding: 0;
-            top: 0;
-            left: 0;
+            margin: 0;
+            overflow: hidden;
         }
 
         img {
+            background-color: black;
             background-repeat: no-repeat;
-            background-size: cover;
             background-attachment: fixed;
-            width: 100vw;
-            height: 100vh;
-            top: 0;
-            position: fixed;
-            left: 0;
-            margin: 0;
+            background-size: cover;
             z-index: 10;
+            pointer-events: none;
         }
 
-        iframe {
-            width: 100vw;
-            height: 100vh;
+        .video {
+            height: 450px;
+            width: 1050px;
+            display: block;
             position: fixed;
-            z-index: -10;
+            margin: 0 auto;
+            z-index: 0;
+            pointer-events: auto;
+            top: 26%;
+            left: 22%;
         }
-    </style>
 
+        #text {
+            text-align: center;
+            position: absolute;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+    </style>
 </head>
 <body>
-<!--<img src="aud.png" alt=""/>-->
-<iframe
+<img src="Stage.png" alt="">
+<iframe class="video"
         src="https://www.youtube-nocookie.com/embed/videoseries?list=PLdGwqZGyfoDVhbKFs1CtLp80afzFbEwnZ"
         title="YouTube video player" frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen></iframe>
+<script>
+    var colors = ["white", "Red", "Orange", "Yellow ", "Cyan",
+        "Magenta"]
+    var currentColor = 0
+    var lis = document.querySelectorAll("#text")
 
+    function changeColor() {
+        --currentColor
+        if (currentColor < 0) currentColor = colors.length - 1
+        for (var i = 0; i < lis.length; i++) {
+            lis[i].style.color = colors[(currentColor + i) % colors.length]
+        }
+    }
+
+    setInterval(changeColor, 100)
+</script>
 </body>
 </html>
